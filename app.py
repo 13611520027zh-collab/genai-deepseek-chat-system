@@ -284,10 +284,11 @@ else:
         add_record("user", user_input, st.session_state.turn_index)
         save_log(st.session_state.participant_id, st.session_state.condition, st.session_state.conversation_id, "user", user_input, st.session_state.turn_index)
 
-        try:
-            assistant_reply = call_deepseek(st.session_state.messages)
-        except Exception as e:
-            assistant_reply = f"系统调用出错，请联系主试。错误信息：{e}"
+        with st.spinner("正在生成回答，请稍候..."):
+            try:
+                assistant_reply = call_deepseek(st.session_state.messages)
+            except Exception as e:
+                assistant_reply = f"当前响应时间过长，请稍后重新发送。如果仍无法响应，请联系主试。错误信息：{e}"
 
         st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
         add_record("assistant", assistant_reply, st.session_state.turn_index)
