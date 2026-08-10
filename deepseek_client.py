@@ -12,6 +12,8 @@ def call_deepseek(messages, model="deepseek-v4-flash", temperature=0):
     response = client.chat.completions.create(
         model=model,
         messages=messages,
-        temperature=temperature
+        temperature=temperature,
+        timeout=60,
+        max_tokens=3000
     )
     return response.choices[0].message.content
