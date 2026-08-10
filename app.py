@@ -288,7 +288,7 @@ else:
             try:
                 assistant_reply = call_deepseek(st.session_state.messages)
             except Exception as e:
-                assistant_reply = f"当前响应时间过长，请稍后重新发送。如果仍无法响应，请联系主试。错误信息：{e}"
+                assistant_reply = f"当前服务响应较慢，请稍候重新尝试。如果仍无法响应，请联系主试。错误信息：{e}"
 
         st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
         add_record("assistant", assistant_reply, st.session_state.turn_index)
