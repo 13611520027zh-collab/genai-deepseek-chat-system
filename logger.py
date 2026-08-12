@@ -1,6 +1,9 @@
 import csv
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+def beijing_time():
+    return datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
 
 LOG_FILE = Path("data/chat_logs.csv")
 
@@ -23,7 +26,7 @@ def save_log(participant_id, condition, conversation_id, role, content, turn_ind
             ])
 
         writer.writerow([
-            datetime.now().isoformat(timespec="seconds"),
+            beijing_time(),
             participant_id,
             condition,
             conversation_id,
