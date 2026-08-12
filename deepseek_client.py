@@ -13,6 +13,10 @@ def call_deepseek(messages, model="deepseek-v4-flash", temperature=0):
         model=model,
         messages=messages,
         temperature=temperature,
-        timeout=60
+        timeout=120,
+        stream=True
     )
-    return response.choices[0].message.content
+
+    for chunk in response:
+        if chunk.choices[0].delta.content:
+            yield chunk.choices[0].delta.content
