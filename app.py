@@ -1,7 +1,7 @@
 import base64
 import io
 import zipfile
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from html import escape
 
 import pandas as pd
@@ -111,6 +111,11 @@ def load_participants():
 
 participants = load_participants()
 
+def beijing_time():
+    return datetime.now(
+        timezone(timedelta(hours=8))
+    ).strftime("%Y-%m-%d %H:%M:%S")
+
 def make_conversation_id(participant_id):
     return f"{participant_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
 
@@ -130,7 +135,7 @@ def start_new_conversation():
 
 def add_record(role, content, turn_index):
     record = {
-        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "timestamp": beijing_time(),
         "participant_id": st.session_state.participant_id,
         "condition": st.session_state.condition,
         "conversation_id": st.session_state.conversation_id,
@@ -147,7 +152,7 @@ def build_txt_record():
     lines = [
         f"被试编号：{participant_id}",
         f"实验条件：{condition}",
-        f"导出时间：{datetime.now().isoformat(timespec='seconds')}",
+        f"导出时间：{beijing_time()}",
         "",
         "======== 对话记录 ========",
         ""
@@ -278,21 +283,106 @@ else:
             st.write(msg["content"])
 
     user_input = st.chat_input("给 GenAI 对话系统发送消息")
+
     if user_input:
+
         st.session_state.turn_index += 1
-        st.session_state.messages.append({"role": "user", "content": user_input})
-        add_record("user", user_input, st.session_state.turn_index)
-        save_log(st.session_state.participant_id, st.session_state.condition, st.session_state.conversation_id, "user", user_input, st.session_state.turn_index)
 
-        with st.spinner("正在生成回答，请稍候..."):
+        # =========================
+        # 1. 保存用户消息
+        # =========================
+
+        st.session_state.messages.append(
+            {
+                "role": "user",
+                "content": user_input
+            }
+        )
+
+        add_record(
+            "user",
+            user_input,
+            st.session_state.turn_index
+        )
+
+        save_log(
+            st.session_state.participant_id,
+            st.session_state.condition,
+            st.session_state.conversation_id,
+            "user",
+            user_input,
+            st.session_state.turn_index
+        )
+
+        # =========================
+        # 2. 立即显示用户消息
+        # =========================
+
+        with st.chat_message("user"):
+            st.write(user_input)
+
+        # =========================
+        # 3. 流式生成 AI 回复
+        # =========================
+
+        assistant_reply = ""
+
+        with st.chat_message("assistant"):
+
+            response_placeholder = st.empty()
+
+            response_placeholder.markdown(
+                "正在生成回答，请稍候..."
+            )
+
             try:
-                assistant_reply = call_deepseek(st.session_state.messages)
-            except Exception as e:
-                assistant_reply = f"当前服务响应较慢，请稍候重新尝试。如果仍无法响应，请联系主试。错误信息：{e}"
 
-        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-        add_record("assistant", assistant_reply, st.session_state.turn_index)
-        save_log(st.session_state.participant_id, st.session_state.condition, st.session_state.conversation_id, "assistant", assistant_reply, st.session_state.turn_index)
-        st.rerun()
+                assistant_reply = ""
+
+                for chunk in call_deepseek(
+                        st.session_state.messages
+                ):
+                    assistant_reply += chunk
+
+                    response_placeholder.write(
+                        assistant_reply
+                    )
+
+
+            except Exception:
+
+                assistant_reply = (
+                    "当前服务响应较慢，请稍候重新尝试。"
+                )
+
+                response_placeholder.write(
+                    assistant_reply
+                )
+
+        # =========================
+        # 4. 保存完整 AI 回复
+        # =========================
+
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": assistant_reply
+            }
+        )
+
+        add_record(
+            "assistant",
+            assistant_reply,
+            st.session_state.turn_index
+        )
+
+        save_log(
+            st.session_state.participant_id,
+            st.session_state.condition,
+            st.session_state.conversation_id,
+            "assistant",
+            assistant_reply,
+            st.session_state.turn_index
+        )
 
     render_floating_download_panel()
