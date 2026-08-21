@@ -13,6 +13,6 @@ def call_deepseek(messages, model="deepseek-v4-flash", temperature=0):
         model=model,
         messages=messages,
         temperature=temperature,
-        timeout=120
+        timeout=300
     )
     return response.choices[0].message.content
