@@ -302,6 +302,7 @@ else:
             st.session_state.turn_index
         )
 
+        # 当前轮用户消息立即显示
         with st.chat_message("user"):
             st.write(user_input)
 
@@ -310,26 +311,46 @@ else:
                 assistant_reply = call_deepseek(
                     st.session_state.messages
                 )
+
+                # ===== 诊断日志 1 =====
+                print(">>> app.py 已收到 assistant_reply")
+                print(
+                    ">>> assistant_reply 长度:",
+                    len(assistant_reply) if assistant_reply else 0
+                )
+
             except Exception as e:
+                print(">>> app.py 调用 DeepSeek 出现异常:", repr(e))
+
                 assistant_reply = (
                     "当前服务响应较慢，请稍候重新尝试。"
                     "如果仍无法响应，请联系主试。"
                     f"错误信息：{e}"
                 )
 
+        # 当前轮 AI 回答立即显示
         with st.chat_message("assistant"):
             st.write(assistant_reply)
+
+        # ===== 诊断日志 2 =====
+        print(">>> 已执行 assistant 页面显示")
 
         st.session_state.messages.append({
             "role": "assistant",
             "content": assistant_reply
         })
 
+        # ===== 诊断日志 3 =====
+        print(">>> 已写入 session_state")
+
         add_record(
             "assistant",
             assistant_reply,
             st.session_state.turn_index
         )
+
+        # ===== 诊断日志 4 =====
+        print(">>> 已写入 all_chat_records")
 
         save_log(
             st.session_state.participant_id,
@@ -340,4 +361,5 @@ else:
             st.session_state.turn_index
         )
 
-    render_floating_download_panel()
+        # ===== 诊断日志 5 =====
+        print(">>> 已完成 assistant save_log")
