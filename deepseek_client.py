@@ -10,16 +10,26 @@ def get_client():
 def call_deepseek(messages, model="deepseek-v4-flash", temperature=0):
     client = get_client()
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        temperature=temperature,
-        timeout=300
-    )
+    print(">>> 准备调用 DeepSeek")
+    print(">>> 当前 messages 数量：", len(messages))
 
-    choice = response.choices[0]
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+            timeout=300
+        )
 
-    print("finish_reason:", choice.finish_reason)
-    print("content:", repr(choice.message.content))
+        print(">>> DeepSeek 已返回 response")
 
-    return choice.message.content
+        choice = response.choices[0]
+
+        print(">>> finish_reason:", choice.finish_reason)
+        print(">>> content:", repr(choice.message.content))
+
+        return choice.message.content
+
+    except Exception as e:
+        print(">>> DeepSeek 调用发生异常：", repr(e))
+        raise
