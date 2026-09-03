@@ -25,7 +25,7 @@ st.set_page_config(
 
 
 # =========================
-# CSS
+# 页面样式
 # =========================
 
 CSS = """
@@ -48,40 +48,40 @@ header {visibility: hidden;}
     position: fixed;
     top: 22px;
     left: 28px;
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:10px;
-    padding:0;
-    color:#202124;
-    z-index:9998;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0;
+    color: #202124;
+    z-index: 9998;
 }
 
 .logo-circle {
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#4f8cff,#7aa7ff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-weight:700;
-    font-size:17px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#4f8cff,#7aa7ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
 }
 
 .chat-title {
-    font-size:22px;
-    font-weight:650;
-    letter-spacing:.2px;
-    line-height:1.05;
+    font-size: 22px;
+    font-weight: 650;
+    letter-spacing: .2px;
+    line-height: 1.05;
 }
 
 .chat-subtitle {
-    font-size:12px;
-    color:#6b7280;
-    margin-left:1px;
-    margin-top:2px;
+    font-size: 12px;
+    color: #6b7280;
+    margin-left: 1px;
+    margin-top: 2px;
 }
 
 @media (max-width:700px) {
@@ -94,82 +94,82 @@ header {visibility: hidden;}
 }
 
 .login-card {
-    max-width:480px;
-    margin:120px auto 0 auto;
-    padding:34px 34px 28px 34px;
-    border-radius:22px;
-    background:#fff;
-    box-shadow:0 12px 35px rgba(0,0,0,.06);
-    border:1px solid #eceef3;
+    max-width: 480px;
+    margin: 120px auto 0 auto;
+    padding: 34px 34px 28px 34px;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(0,0,0,.06);
+    border: 1px solid #eceef3;
 }
 
 .login-title {
-    text-align:center;
-    font-size:26px;
-    font-weight:700;
-    margin-bottom:8px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
 .login-subtitle {
-    text-align:center;
-    color:#6b7280;
-    font-size:15px;
-    margin-bottom:20px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 15px;
+    margin-bottom: 20px;
 }
 
 .welcome {
-    text-align:center;
-    margin-top:88px;
-    margin-bottom:30px;
+    text-align: center;
+    margin-top: 88px;
+    margin-bottom: 30px;
 }
 
 .welcome-title {
-    font-size:32px;
-    font-weight:720;
-    color:#202124;
-    margin-bottom:8px;
+    font-size: 32px;
+    font-weight: 720;
+    color: #202124;
+    margin-bottom: 8px;
 }
 
 .welcome-subtitle {
-    font-size:16px;
-    color:#6b7280;
+    font-size: 16px;
+    color: #6b7280;
 }
 
 .stChatMessage {
-    background:transparent;
+    background: transparent;
 }
 
 [data-testid="stChatMessageContent"] {
-    border-radius:18px;
-    padding:12px 16px;
+    border-radius: 18px;
+    padding: 12px 16px;
 }
 
 .stChatMessage:has([data-testid="chatAvatarIcon-user"])
 [data-testid="stChatMessageContent"] {
-    background:#e9f1ff;
+    background: #e9f1ff;
 }
 
 .stChatMessage:has([data-testid="chatAvatarIcon-assistant"])
 [data-testid="stChatMessageContent"] {
-    background:#fff;
-    border:1px solid #edf0f5;
+    background: #fff;
+    border: 1px solid #edf0f5;
 }
 
 [data-testid="stChatInput"] {
-    max-width:820px;
-    margin:0 auto;
+    max-width: 820px;
+    margin: 0 auto;
 }
 
 [data-testid="stChatInput"] textarea {
-    border-radius:18px !important;
-    border:1px solid #dfe3ea !important;
-    background:#fff !important;
-    box-shadow:0 6px 25px rgba(0,0,0,.06);
+    border-radius: 18px !important;
+    border: 1px solid #dfe3ea !important;
+    background: #fff !important;
+    box-shadow: 0 6px 25px rgba(0,0,0,.06);
 }
 
 .stButton > button {
-    border-radius:14px;
-    font-weight:600;
+    border-radius: 14px;
+    font-weight: 600;
 }
 
 .floating-download-panel {
@@ -187,29 +187,29 @@ header {visibility: hidden;}
 }
 
 .floating-download-title {
-    font-size:13px;
-    font-weight:700;
-    color:#202124;
-    margin-bottom:4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #202124;
+    margin-bottom: 4px;
 }
 
 .floating-download-desc {
-    font-size:11.5px;
-    color:#6b7280;
-    line-height:1.45;
-    margin-bottom:9px;
+    font-size: 11.5px;
+    color: #6b7280;
+    line-height: 1.45;
+    margin-bottom: 9px;
 }
 
 .floating-download-links a {
-    display:block;
-    text-align:center;
-    padding:8px 0;
-    border-radius:12px;
-    text-decoration:none;
-    font-size:12.5px;
-    font-weight:650;
-    color:white !important;
-    background:#4f8cff;
+    display: block;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 650;
+    color: white !important;
+    background: #4f8cff;
 }
 
 @media (max-width:700px) {
@@ -239,7 +239,7 @@ participants = load_participants()
 
 
 # =========================
-# 基础函数
+# 基础功能
 # =========================
 
 def make_conversation_id(participant_id):
@@ -275,7 +275,12 @@ def start_new_conversation():
     )
 
 
+# =========================
+# 当前会话内记录
+# =========================
+
 def add_record(role, content, turn_index):
+
     record = {
         "timestamp": datetime.now().isoformat(timespec="seconds"),
         "participant_id": st.session_state.participant_id,
@@ -290,13 +295,56 @@ def add_record(role, content, turn_index):
 
 
 # =========================
-# 下载记录
+# 安全保存本地日志
+# =========================
+
+def safe_save_log(
+        participant_id,
+        condition,
+        conversation_id,
+        role,
+        content,
+        turn_index
+):
+    """
+    日志保存失败时，只在服务器日志中记录错误，
+    不允许日志保存失败中断正常的 DeepSeek 对话。
+    """
+
+    try:
+        save_log(
+            participant_id,
+            condition,
+            conversation_id,
+            role,
+            content,
+            turn_index
+        )
+
+    except Exception as e:
+        print(">>> 日志保存失败：", repr(e))
+
+
+# =========================
+# 构建 TXT 下载记录
 # =========================
 
 def build_txt_record():
-    participant_id = st.session_state.get("participant_id", "")
-    condition = st.session_state.get("condition", "")
-    records = st.session_state.get("all_chat_records", [])
+
+    participant_id = st.session_state.get(
+        "participant_id",
+        ""
+    )
+
+    condition = st.session_state.get(
+        "condition",
+        ""
+    )
+
+    records = st.session_state.get(
+        "all_chat_records",
+        []
+    )
 
     lines = [
         f"被试编号：{participant_id}",
@@ -308,13 +356,17 @@ def build_txt_record():
     ]
 
     if not records:
+
         lines.append("暂无对话内容。")
 
     else:
+
         current_conversation = None
 
         for record in records:
+
             if record["conversation_id"] != current_conversation:
+
                 current_conversation = record["conversation_id"]
 
                 lines.append("")
@@ -339,8 +391,16 @@ def build_txt_record():
     return "\n".join(lines)
 
 
+# =========================
+# 构建 CSV 下载记录
+# =========================
+
 def build_csv_record():
-    records = st.session_state.get("all_chat_records", [])
+
+    records = st.session_state.get(
+        "all_chat_records",
+        []
+    )
 
     rows = [
         "timestamp,participant_id,condition,"
@@ -348,6 +408,7 @@ def build_csv_record():
     ]
 
     for record in records:
+
         content = (
             record["content"]
             .replace('"', '""')
@@ -367,22 +428,27 @@ def build_csv_record():
     return "\n".join(rows)
 
 
+# =========================
+# 构建 ZIP
+# =========================
+
 def build_zip_record():
+
     participant_id = st.session_state.get(
         "participant_id",
         "participant"
     )
 
-    export_time = datetime.now().strftime("%Y%m%d%H%M%S")
+    export_time = datetime.now().strftime(
+        "%Y%m%d%H%M%S"
+    )
 
     txt_name = (
-        f"{participant_id}_"
-        f"{export_time}_chat_record.txt"
+        f"{participant_id}_{export_time}_chat_record.txt"
     )
 
     csv_name = (
-        f"{participant_id}_"
-        f"{export_time}_chat_record.csv"
+        f"{participant_id}_{export_time}_chat_record.csv"
     )
 
     buffer = io.BytesIO()
@@ -406,7 +472,27 @@ def build_zip_record():
     return buffer.getvalue()
 
 
+# =========================
+# Data URI
+# =========================
+
+def data_uri(text, mime_type):
+
+    encoded = base64.b64encode(
+        text.encode("utf-8-sig")
+    ).decode("utf-8")
+
+    return (
+        f"data:{mime_type};base64,{encoded}"
+    )
+
+
+# =========================
+# 下载面板
+# =========================
+
 def render_floating_download_panel():
+
     records = st.session_state.get(
         "all_chat_records",
         []
@@ -420,11 +506,12 @@ def render_floating_download_panel():
         "participant"
     )
 
-    export_time = datetime.now().strftime("%Y%m%d%H%M%S")
+    export_time = datetime.now().strftime(
+        "%Y%m%d%H%M%S"
+    )
 
     zip_name = (
-        f"{participant_id}_"
-        f"{export_time}_chat_records.zip"
+        f"{participant_id}_{export_time}_chat_records.zip"
     )
 
     zip_bytes = build_zip_record()
@@ -436,6 +523,7 @@ def render_floating_download_panel():
 
     html = f"""
     <div class="floating-download-panel">
+
         <div class="floating-download-title">
             对话记录
         </div>
@@ -452,6 +540,7 @@ def render_floating_download_panel():
                 一键下载记录
             </a>
         </div>
+
     </div>
     """
 
@@ -462,16 +551,21 @@ def render_floating_download_panel():
 
 
 # =========================
-# 页面标题
+# 页面左上角标题
 # =========================
 
 def render_header():
+
     st.markdown(
         """
         <div class="chat-header">
-            <div class="logo-circle">G</div>
+
+            <div class="logo-circle">
+                G
+            </div>
 
             <div>
+
                 <div class="chat-title">
                     GenAI 对话系统
                 </div>
@@ -479,7 +573,9 @@ def render_header():
                 <div class="chat-subtitle">
                     Powered by DeepSeek API
                 </div>
+
             </div>
+
         </div>
         """,
         unsafe_allow_html=True
@@ -487,7 +583,7 @@ def render_header():
 
 
 # =========================
-# 初始化 session_state
+# Session State 初始化
 # =========================
 
 if "started" not in st.session_state:
@@ -505,6 +601,7 @@ if not st.session_state.started:
     st.markdown(
         """
         <div class="login-card">
+
             <div class="login-title">
                 欢迎参加本次实验！
             </div>
@@ -512,6 +609,7 @@ if not st.session_state.started:
             <div class="login-subtitle">
                 请输入您的编号，进入 GenAI 对话系统。
             </div>
+
         </div>
         """,
         unsafe_allow_html=True
@@ -534,23 +632,26 @@ if not st.session_state.started:
         )
 
         if participant_id is None:
+
             st.error(
                 "请输入 1-80 之间的数字编号。"
             )
 
         else:
+
             row = participants[
                 participants["participant_id"]
                 == participant_id
             ]
 
             if row.empty:
+
                 st.error(
-                    "编号不存在，请检查后重新输入，"
-                    "或联系主试。"
+                    "编号不存在，请检查后重新输入，或联系主试。"
                 )
 
             else:
+
                 st.session_state.participant_id = (
                     participant_id
                 )
@@ -569,30 +670,36 @@ if not st.session_state.started:
 
 
 # =========================
-# 对话页面
+# 正式聊天页面
 # =========================
 
 else:
 
     render_header()
 
+
     # -------------------------
-    # 开启新对话按钮
+    # 开启新对话
     # -------------------------
 
-    col1, col2, col3 = st.columns([1, 1, 1])
+    col1, col2, col3 = st.columns(
+        [1, 1, 1]
+    )
 
     with col2:
+
         if st.button(
             "＋ 开启新对话",
             use_container_width=True
         ):
+
             start_new_conversation()
+
             st.rerun()
 
 
     # -------------------------
-    # 显示已有聊天记录
+    # 显示当前对话
     # -------------------------
 
     visible_messages = [
@@ -606,6 +713,7 @@ else:
         st.markdown(
             """
             <div class="welcome">
+
                 <div class="welcome-title">
                     我是 GenAI 对话系统，很高兴见到你！
                 </div>
@@ -613,15 +721,22 @@ else:
                 <div class="welcome-subtitle">
                     请根据任务书要求，在下方输入框中开始对话。
                 </div>
+
             </div>
             """,
             unsafe_allow_html=True
         )
 
+
     for msg in visible_messages:
 
-        with st.chat_message(msg["role"]):
-            st.write(msg["content"])
+        with st.chat_message(
+            msg["role"]
+        ):
+
+            st.write(
+                msg["content"]
+            )
 
 
     # -------------------------
@@ -633,29 +748,32 @@ else:
     )
 
 
-    # -------------------------
-    # 处理当前一轮消息
-    # -------------------------
-
     if user_input:
 
+        # 当前轮次 +1
         st.session_state.turn_index += 1
 
-        # 用户消息写入 session_state
-        st.session_state.messages.append({
-            "role": "user",
-            "content": user_input
-        })
 
-        # 用户消息写入下载记录
+        # 保存用户消息到当前上下文
+        st.session_state.messages.append(
+            {
+                "role": "user",
+                "content": user_input
+            }
+        )
+
+
+        # 保存到当前 session 下载记录
         add_record(
             "user",
             user_input,
             st.session_state.turn_index
         )
 
-        # 用户消息写入本地日志
-        save_log(
+
+        # 保存到本地日志
+        # 即使日志保存失败，也不能影响 DeepSeek
+        safe_save_log(
             st.session_state.participant_id,
             st.session_state.condition,
             st.session_state.conversation_id,
@@ -663,10 +781,6 @@ else:
             user_input,
             st.session_state.turn_index
         )
-
-        # 当前轮用户消息立即显示
-        with st.chat_message("user"):
-            st.write(user_input)
 
 
         # -------------------------
@@ -683,21 +797,10 @@ else:
                     st.session_state.messages
                 )
 
-                print(
-                    ">>> app.py 已收到 assistant_reply"
-                )
-
-                print(
-                    ">>> assistant_reply 长度:",
-                    len(assistant_reply)
-                    if assistant_reply
-                    else 0
-                )
-
             except Exception as e:
 
                 print(
-                    ">>> app.py 调用 DeepSeek 出现异常:",
+                    ">>> DeepSeek 请求失败：",
                     repr(e)
                 )
 
@@ -709,51 +812,27 @@ else:
 
 
         # -------------------------
-        # 当前轮 AI 回答立即显示
+        # 保存 AI 回复
         # -------------------------
 
-        with st.chat_message("assistant"):
-            st.write(assistant_reply)
-
-        print(
-            ">>> 已执行 assistant 页面显示"
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": assistant_reply
+            }
         )
 
 
-        # -------------------------
-        # AI 回答写入 session_state
-        # -------------------------
-
-        st.session_state.messages.append({
-            "role": "assistant",
-            "content": assistant_reply
-        })
-
-        print(
-            ">>> 已写入 session_state"
-        )
-
-
-        # -------------------------
-        # AI 回答加入下载记录
-        # -------------------------
-
+        # 保存到当前 session 下载记录
         add_record(
             "assistant",
             assistant_reply,
             st.session_state.turn_index
         )
 
-        print(
-            ">>> 已写入 all_chat_records"
-        )
 
-
-        # -------------------------
-        # AI 回答写入本地日志
-        # -------------------------
-
-        save_log(
+        # 保存到本地日志
+        safe_save_log(
             st.session_state.participant_id,
             st.session_state.condition,
             st.session_state.conversation_id,
@@ -762,13 +841,13 @@ else:
             st.session_state.turn_index
         )
 
-        print(
-            ">>> 已完成 assistant save_log"
-        )
+
+        # 重新渲染页面
+        st.rerun()
 
 
-    # =========================
+    # -------------------------
     # 右上角下载面板
-    # =========================
+    # -------------------------
 
     render_floating_download_panel()
