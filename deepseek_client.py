@@ -26,9 +26,14 @@ def call_deepseek(messages, model="deepseek-v4-flash", temperature=0):
         choice = response.choices[0]
 
         print(">>> finish_reason:", choice.finish_reason)
-        print(">>> content:", repr(choice.message.content))
 
-        return choice.message.content
+        content = choice.message.content
+
+        print(">>> content 类型:", type(content))
+        print(">>> content 原始值:", repr(content))
+        print(">>> content 长度:", len(content) if content is not None else "None")
+
+        return content
 
     except Exception as e:
         print(">>> DeepSeek 调用发生异常：", repr(e))
