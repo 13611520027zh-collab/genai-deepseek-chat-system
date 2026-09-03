@@ -278,21 +278,66 @@ else:
             st.write(msg["content"])
 
     user_input = st.chat_input("给 GenAI 对话系统发送消息")
+
     if user_input:
         st.session_state.turn_index += 1
-        st.session_state.messages.append({"role": "user", "content": user_input})
-        add_record("user", user_input, st.session_state.turn_index)
-        save_log(st.session_state.participant_id, st.session_state.condition, st.session_state.conversation_id, "user", user_input, st.session_state.turn_index)
+
+        st.session_state.messages.append({
+            "role": "user",
+            "content": user_input
+        })
+
+        add_record(
+            "user",
+            user_input,
+            st.session_state.turn_index
+        )
+
+        save_log(
+            st.session_state.participant_id,
+            st.session_state.condition,
+            st.session_state.conversation_id,
+            "user",
+            user_input,
+            st.session_state.turn_index
+        )
+
+        with st.chat_message("user"):
+            st.write(user_input)
 
         with st.spinner("正在生成回答，请稍候..."):
             try:
-                assistant_reply = call_deepseek(st.session_state.messages)
+                assistant_reply = call_deepseek(
+                    st.session_state.messages
+                )
             except Exception as e:
-                assistant_reply = f"当前服务响应较慢，请稍候重新尝试。如果仍无法响应，请联系主试。错误信息：{e}"
+                assistant_reply = (
+                    "当前服务响应较慢，请稍候重新尝试。"
+                    "如果仍无法响应，请联系主试。"
+                    f"错误信息：{e}"
+                )
 
-        st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
-        add_record("assistant", assistant_reply, st.session_state.turn_index)
-        save_log(st.session_state.participant_id, st.session_state.condition, st.session_state.conversation_id, "assistant", assistant_reply, st.session_state.turn_index)
-        ##st.rerun()
+        with st.chat_message("assistant"):
+            st.write(assistant_reply)
+
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": assistant_reply
+        })
+
+        add_record(
+            "assistant",
+            assistant_reply,
+            st.session_state.turn_index
+        )
+
+        save_log(
+            st.session_state.participant_id,
+            st.session_state.condition,
+            st.session_state.conversation_id,
+            "assistant",
+            assistant_reply,
+            st.session_state.turn_index
+        )
 
     render_floating_download_panel()
