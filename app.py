@@ -293,6 +293,6 @@ else:
         st.session_state.messages.append({"role": "assistant", "content": assistant_reply})
         add_record("assistant", assistant_reply, st.session_state.turn_index)
         save_log(st.session_state.participant_id, st.session_state.condition, st.session_state.conversation_id, "assistant", assistant_reply, st.session_state.turn_index)
-        st.rerun()
+        ##st.rerun()
 
     render_floating_download_panel()
