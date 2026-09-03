@@ -9,10 +9,17 @@ def get_client():
 
 def call_deepseek(messages, model="deepseek-v4-flash", temperature=0):
     client = get_client()
+
     response = client.chat.completions.create(
         model=model,
         messages=messages,
         temperature=temperature,
         timeout=300
     )
-    return response.choices[0].message.content
+
+    choice = response.choices[0]
+
+    print("finish_reason:", choice.finish_reason)
+    print("content:", repr(choice.message.content))
+
+    return choice.message.content
